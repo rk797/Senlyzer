@@ -1,0 +1,25 @@
+{
+  "name": "senlyzer",
+  "version": "1.0.0",
+  "description": "Sentiment analysis tool",
+  "main": "index.js",
+  "scripts": {
+    "watch": "tailwindcss -i ./static/src/input.css -o ./static/dist/css/output.css --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rk767/Senlyzer.git"
+  },
+  "keywords": [
+    "Senlyzer"
+  ],
+  "author": "rk767",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rk767/Senlyzer/issues"
+  },
+  "homepage": "https://github.com/rk767/Senlyzer#readme",
+  "devDependencies": {
+    "tailwindcss": "^3.4.3"
+  }
+}
