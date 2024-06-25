@@ -3,7 +3,6 @@ import os
 path = os.path.abspath(os.path.join(os.getcwd(), os.pardir))
 sys.path.append(os.path.join(path, "Senlyzer"))
 from train_BERT import SentimentClassifier
-import requests
 from PIL import Image
 from transformers import BlipProcessor, BlipForConditionalGeneration, CLIPProcessor, CLIPModel
 import torch
@@ -31,9 +30,8 @@ class Senlyzer:
         self.__image_caption_model = BlipForConditionalGeneration.from_pretrained("Salesforce/blip-image-captioning-large")
         self.__image_caption_processor = BlipProcessor.from_pretrained("Salesforce/blip-image-captioning-large")
         
-    def image_input(self, path:str):
-        img_url = rf"{path}"
-        self.__image = Image.open(img_url).convert('RGB')
+    def image_input(self, img_file):
+        self.__image = Image.open(img_file.stream).convert("RGB")
     def text_input(self, text):
         self.__text = str(text)
 
@@ -147,12 +145,3 @@ class Senlyzer:
                 return score, prediction
         else:
             print("---Missing input---")
-# for testing
-# def main():
-#     SE = Senlyzer()
-#     SE.image_input(r"C:\Users\GIGABYTE\Downloads\quick down\images.png")
-#     SE.text_input("New chemical that is extremly poisioness but can be a break through in science.")
-#     score, prediction = SE.text_img_sentiment
-#     print(f"Score: {score} \n Sentiment: {prediction}")
-# if __name__ == "__main__":
-#     main()
