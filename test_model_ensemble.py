@@ -14,8 +14,6 @@ from torch.optim import AdamW
 from torch.utils.checkpoint import checkpoint
 from torch.cuda.amp import GradScaler, autocast
 
-#TODO: Install pytorch with cuda to use GPU
-
 
 #---------------Initialize---------------#
 TU = utility.TextUtility()

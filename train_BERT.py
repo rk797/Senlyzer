@@ -5,11 +5,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 
-from matplotlib import rc
 from sklearn.model_selection import train_test_split
 from tqdm import tqdm
 from torch import nn, optim
-from transformers import BertTokenizer, BertModel, BertForSequenceClassification, get_linear_schedule_with_warmup, AdamW
+from transformers import BertModel, get_linear_schedule_with_warmup, AdamW
 from torch.utils import data
 from torch.optim import RMSprop
 from pylab import rcParams
