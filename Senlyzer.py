@@ -1,15 +1,12 @@
 from flask import Flask, request, jsonify, render_template
-from transformers import AutoTokenizer, AutoModelForSequenceClassification, pipeline
+from werkzeug.utils import secure_filename
+import os
 from module.sentiment import Senlyzer
 
-
 app = Flask(__name__)
-senlyzer = Senlyzer()
+app.config['UPLOAD_FOLDER'] = 'uploads/'
 
-# model_name = "finiteautomata/bertweet-base-sentiment-analysis"
-# tokenizer = AutoTokenizer.from_pretrained(model_name)
-# model = AutoModelForSequenceClassification.from_pretrained(model_name)
-# sentiment_analysis = pipeline("sentiment-analysis", model=model, tokenizer=tokenizer)
+senlyzer = Senlyzer()
 
 @app.route('/')
 def index():
@@ -19,11 +16,30 @@ def index():
 def analyze():
     input_text = request.form['text']
     senlyzer.text_input(input_text)
-    score, sentiment = senlyzer.text_sentiment() 
+    text_score, text_sentiment = senlyzer.text_sentiment()
+    
+    image_score, image_sentiment = None, None
+    if 'image' in request.files:
+        image = request.files['image']
+        if image.filename != '':
+            filename = secure_filename(image.filename)
+            image_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+            image.save(image_path)
+            senlyzer.image_input(image_path)
+            image_score, image_sentiment = senlyzer.image_sentiment()
+            os.remove(image_path)
+    
     result = {
-        'score': float(score[0]), 
-        'sentiment': sentiment
+        'text_result': {
+            'score': float(text_score[0]),
+            'sentiment': text_sentiment
+        },
+        'image_result': {
+            'score': float(image_score) if image_score is not None else None,
+            'sentiment': image_sentiment
+        }
     }
+    
     return jsonify({'result': result})
 
 if __name__ == '__main__':
