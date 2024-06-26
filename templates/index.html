@@ -6,32 +6,47 @@
     <title>Sentiment Analysis</title>
     <link href="../static/dist/css/output.css" rel="stylesheet">
     <link rel="stylesheet" href="../static/dist/css/custom.css">
+    <style>
+        @keyframes slideInFromBottom {
+            0% {
+                transform: translateY(20%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        .slide-in-bottom {
+            animation: slideInFromBottom 1s cubic-bezier(.39,.21,.12,.96);
+        }
+    </style>
 </head>
 
-<body class="bg-zinc-900 h-screen flex items-center justify-center flex-col">
-    <nav class="container mq-disable z-10 absolute top-12">
+<body class="bg-zinc-800 h-screen flex items-center justify-center flex-col duration-150">
+    <nav class="container mq-disable z-10 absolute top-12 slide-in-bottom">
         <div class="flex gap-14 justify-center items-center font-semibold text-white">
             <a href="/404">About</a>
             <a href="/404">F.A.Q</a>
             <a href="/404">Run Inference</a>
         </div>
     </nav>
-    <div class="p-8 rounded w-1/2 flex justify-center items-center flex-col">
-        <h1 class="text-6xl font-bold mb-6 text-white uppercase">Senlyzer</h1>
-        <form id="analyze-form">
-            <div class="flex items-center justify-center flex-col">
+    <div class="p-8 rounded w-1/2 flex justify-center items-start flex-col slide-in-bottom">
+        <h1 class="text-7xl font-bold mb-6 text-white uppercase">JJ</h1>
+        <h2 class="text-white font-bold text-3xl">About</h2>
+        <p class="text-white text-xl max-w-[45vw] text-left">Senlyzer analyzes the emotional tone of input text and provides an immediate, precise assessment. Whether evaluating the sentiment of social media posts, customer reviews, or personal messages, Senlyzer delivers accurate insights to facilitate a deeper understanding of underlying emotions.</p>
+        <h2 class="mb-7 mt-3 text-white text-xl">Learn more about how Senlyzer works <a href="https://github.com/rk767/Senlyzer" class="underline text-blue-400" target="_blank">here</a></h2>
+
+        <form id="analyze-form" class="slide-in-bottom">
+            <div class="flex items-start justify-center flex-col">
                 <div class="mb-4">
-                    <!-- <label for="text" class="block text-xl font-bold mb-2 text-gray-400 pb-1 text-center">Enter a sentence:</label> -->
-                    <input type="text" id="text" name="text" placeholder="Enter a sentence" class="w-[50vw] shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    <input type="text" id="text" name="text" placeholder="Enter a sentence" class="w-[50vw] border rounded-sm py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline">
                 </div>
-                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded border border-blue-700 hover:border-white focus:outline-none focus:shadow-outline duration-300 mt-2">Run Inference</button>
+                <button type="submit" class=" text-white font-bold py-2 px-4 rounded border border-blue-700 hover:border-white focus:outline-none focus:shadow-outline duration-300 mt-2">Run Inference</button>
             </div>
         </form>
-        <div id="result" class="mt-6 text-center w-[50vw]"></div>
-    </div>
-    <div>
-        <!-- <h1 class="text-white text-5xl font-bold text-center mb-3">About</h1> -->
-        <p class="text-white text-xl max-w-[45vw] text-center">Senlyzer analyzes the emotional tone of input text and provides an immediate, precise assessment. Whether evaluating the sentiment of social media posts, customer reviews, or personal messages, Senlyzer delivers accurate insights to facilitate a deeper understanding of underlying emotions.</p>
+        <div id="result" class="mt-6 text-left w-fit"></div>
+        <div class="text-white text-xl font-bold">Created by <a class="text text-blue-400 underline" target="_blank" href="https://github.com/rk767">Ryan K</a>, <a class="text text-blue-400 underline" target="_blank" href="https://github.com/GodRishUniverse">Rishabh A</a>, <a class="text text-blue-400 underline" target="_blank" href="https://github.com/Manav2805">Manav P</a>, and <a class="text text-blue-400 underline" href="https://github.com/hongloc1221">Hoang D</a></div>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
