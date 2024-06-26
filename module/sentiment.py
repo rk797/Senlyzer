@@ -66,9 +66,8 @@ class Senlyzer:
             scores = scores.detach().numpy()
             np.set_printoptions(suppress=True)
             score = np.max(scores)
-            prediction = np.where(scores==score)[0]
+            prediction = np.where(scores==score)[1]
             prediction = prediction[0]
-            print(prediction)
             if prediction == 0:
                 prediction = "NEGATIVE"
             elif prediction ==1:
