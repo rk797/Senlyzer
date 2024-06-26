@@ -40,7 +40,7 @@ def analyze():
             },
             'image_result': {
                 'score': float(image_score) if image_score is not None else None,
-                'sentiment': 'NONE'
+                'sentiment': image_sentiment
             }
         }
 
