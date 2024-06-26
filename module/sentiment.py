@@ -30,8 +30,9 @@ class Senlyzer:
         self.__image_caption_model = BlipForConditionalGeneration.from_pretrained("Salesforce/blip-image-captioning-large")
         self.__image_caption_processor = BlipProcessor.from_pretrained("Salesforce/blip-image-captioning-large")
         
-    def image_input(self, img_file):
-        self.__image = Image.open(img_file.stream).convert("RGB")
+    def image_input(self, path:str):
+        img_url = rf"{path}"
+        self.__image = Image.open(img_url).convert('RGB')
     def text_input(self, text):
         self.__text = str(text)
 
