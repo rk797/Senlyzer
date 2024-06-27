@@ -43,6 +43,10 @@ def analyze():
             'image_result': {
                 'score': float(image_score) if image_score is not None else None,
                 'sentiment': 'NONE'
+            },
+            'combined_result': {
+                'score': float(combined_score),
+                'sentiment': combined_sentiment
             }
         }
 
