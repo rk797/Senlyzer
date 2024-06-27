@@ -105,11 +105,16 @@
                     success: function (response) {
                         const textResult = response.result.text_result;
                         const imageResult = response.result.image_result;
+                        const combinedResult = response.result.combinedResult;
 
                         let resultHTML = '<p class="text-xl font-bold text-white ">Text Sentiment: ' + textResult.sentiment + '<br>Text Score: ' + textResult.score.toFixed(2) + '</p>';
 
                         if (imageResult.score !== null) {
                             resultHTML += '<p class="text-xl font-bold text-white ">Image Sentiment: ' + imageResult.sentiment + '<br>Image Score: ' + imageResult.score.toFixed(2) + '</p>';
+                        }
+
+                        if (combinedResult.score !== null){
+                            resultHTML += '<p class="text-xl font-bold text-white ">Image Sentiment: ' + combinedResult.sentiment + '<br>Image Score: ' + combinedResult.score.toFixed(2) + '</p>';
                         }
 
                         $('#result').html(resultHTML);

@@ -32,6 +32,8 @@ def analyze():
                 image_score, image_sentiment = senlyzer.image_sentiment()
                 os.remove(image_path)
                 print(f"Image processed and deleted: {image_path}")
+        
+        combined_score, combined_sentiment = senlyzer.combined_sentiment(text_score[0], image_score)
 
         result = {
             'text_result': {
@@ -41,6 +43,10 @@ def analyze():
             'image_result': {
                 'score': float(image_score) if image_score is not None else None,
                 'sentiment': 'NONE'
+            },
+            'combined_result': {
+                'score': float(combined_score),
+                'sentiment': combined_sentiment
             }
         }
 
