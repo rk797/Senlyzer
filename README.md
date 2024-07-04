@@ -7,11 +7,17 @@ Senlyzer analyzes the emotional tone of input text and provides an immediate, pr
 
 # Setup
 Install Python dependencies
-```pip install -r requirements.txt```
+```python
+pip install -r requirements.txt
+```
 
 Install NodeJS dependencies
 
-```npm i```
+```
+npm i
+```
 Run Flask Server
 
-```Python.exe ./Senlyzer.py```
+```
+Python.exe ./Senlyzer.py
+```
